@@ -91,7 +91,7 @@ function AnimatedGallery({ images, isImagesLoaded }) {
 // Home page: only countdown and intro
 function HomePage() {
   const navigate = useNavigate();
-  const birthday = "2025-05-04T21:36:00";
+  const birthday = "2025-05-04T22:52:00";
   const [ready, setReady] = useState(false);
   const onComplete = () => setReady(true);
   return (
@@ -116,7 +116,7 @@ function HomePage() {
             onClick={() => navigate("/gift")}
             className="mt-6 px-6 py-3 bg-purple-600 text-white font-semibold rounded-full shadow hover:bg-purple-700"
           >
-            Take Your Gift Brother
+            Check Out Your Gift
           </motion.button>
         </>
       )}
@@ -155,7 +155,7 @@ function GiftPage() {
     audioRef.current.play().catch(() => {});
     setConfettiActive(true);
     const confettiTimer = setTimeout(() => setConfettiActive(false), 42000);
-    const partyTimer = setTimeout(() => setShowPartyBtn(true), 40000);
+    const partyTimer = setTimeout(() => setShowPartyBtn(true), 42000);
     return () => {
       clearTimeout(confettiTimer);
       clearTimeout(partyTimer);
@@ -179,7 +179,7 @@ function GiftPage() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 1 } }}
           >
-            <Confetti recycle={true} numberOfPieces={300} />
+            <Confetti recycle={true} numberOfPieces={100} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -326,7 +326,7 @@ function PartyPage() {
 
       {/* Confetti */}
       <AnimatePresence>
-        <Confetti recycle numberOfPieces={500} />
+        <Confetti recycle numberOfPieces={100} />
       </AnimatePresence>
 
       {/* Balloons */}
@@ -365,22 +365,8 @@ function PartyPage() {
         🎉 Party Time! 🎉
       </motion.h1>
 
-      {/* Visual beat indicator - helps debug if audio levels are working */}
-      {/* <div className="absolute bottom-4 left-4 flex gap-1">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <div
-            key={i}
-            className="w-2 bg-white rounded-full"
-            style={{
-              height: `${Math.min(40, (level - 1) * 100)}px`,
-              opacity: isPlaying ? 0.7 : 0.2,
-            }}
-          />
-        ))}
-      </div> */}
-
       {/* Hidden audio */}
-      <audio ref={audioRef} src={partySong} loop className="hidden" />
+      <audio ref={audioRef} src={partySong} className="hidden" />
     </motion.div>
   );
 }
