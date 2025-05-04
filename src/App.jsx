@@ -91,7 +91,7 @@ function AnimatedGallery({ images, isImagesLoaded }) {
 // Home page: only countdown and intro
 function HomePage() {
   const navigate = useNavigate();
-  const birthday = "2025-05-04T22:52:00";
+  const birthday = "2025-05-05T00:00:00";
   const [ready, setReady] = useState(false);
   const onComplete = () => setReady(true);
   return (
